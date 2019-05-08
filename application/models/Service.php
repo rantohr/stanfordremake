@@ -112,5 +112,30 @@ class Service extends CI_Model
         //return $list_schools_with_dept;
     }
 
+    public function findAllDept()
+    {
+        $sql = "SELECT * from department_view";
+        $resultat = $this->db->query($sql);
+        $ret = $resultat->result_array();
+        return $ret;
+    }
+
+    public function addDept($data)
+    {
+        $this->db->insert('departments',$data);
+    }
+
+    public function updateDept($id, $data)
+    {
+        $this->db->where('id', $id);
+        $this->db->update('departments', $data);
+    }
+
+    public function deleteDept($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('departments', array('id' => $id));
+    }
+
     /*******/
 }

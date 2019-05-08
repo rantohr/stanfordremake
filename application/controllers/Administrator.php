@@ -61,49 +61,70 @@ class Administrator extends CI_Controller
 
     public function departments()
     {
-        //$this->load->library('grocery_CRUD');
         $this->load->model('Service');
         $service = new Service();
-        $crud = new grocery_CRUD();
-        $crud->set_table('departments');
-        $crud->display_as('id_sch','School');
-        $crud->set_subject('Department');
-        $crud->set_relation('id_sch','schools','name');
-        $crud->unset_columns(array('dep_index','img'));
-        $output = $crud->render();
-
+        $output = $service->findAllDept();
+        $listSch = $service->findAllSchool();
         $view_data = array(
             'page' => 'departments',
-            'output' => $output
+            'output' => $output,
+            'listSch' => $listSch
         );
-        //$this->load->view('back/index-back',$view_data);
-        $this->load->view('back/index-back',$output);
+        $this->load->view('back/index-back',$view_data);
     }
 
-    function arrayToObject($d) {
-        if (is_array($d)) {
-            /*
-            * Return array converted to object
-            * Using __FUNCTION__ (Magic constant)
-            * for recursive call
-            */
-            return (object) array_map(__FUNCTION__, $d);
-        }
-        else {
-            // Return object
-            return $d;
-        }
-    }
-
-    public function dashboard()
+    public function go_add()
     {
         $this->load->model('Service');
         $service = new Service();
-
+        $listSch = $service->findAllSchool();
         $view_data = array(
-            'page' => 'dashboard'
+            'page' => 'create',
+            'listSch' => $listSch
         );
         $this->load->view('back/index-back',$view_data);
+    }
+
+    public function addDept()
+    {
+        $this->load->model('Service');
+        $service = new Service();
+        $data = array(
+            'name' => $this->input->post('name'),
+            'id_sch' => $this->input->post('id_sch'),
+            'director' => $this->input->post('director'),
+            'founded_in' => $this->input->post('fi'),
+            //'img' => $this->input->post('img'),
+            'description' => $this->input->post('description')
+        );
+        $service->addDept($data);
+        redirect(base_url().'Administrator/');
+    }
+
+    public function updateDept()
+    {
+        $this->load->model('Service');
+        $service = new Service();
+        $id = $this->input->post('id');
+        $data = array(
+            'name' => $this->input->post('name'),
+            'id_sch' => $this->input->post('id_sch'),
+            'director' => $this->input->post('director'),
+            'founded_in' => $this->input->post('fi'),
+            'description' => $this->input->post('description'),
+            'img' => $this->input->post('img')
+        );
+        $service->updateDept($id,$data);
+        redirect(base_url().'Administrator/');
+    }
+
+    public function deleteDept()
+    {
+        $this->load->model('Service');
+        $service = new Service();
+        $id = $this->input->post('id');
+        $service->deleteDept($id);
+        redirect(base_url().'Administrator/');
     }
 
 }

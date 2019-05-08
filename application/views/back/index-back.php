@@ -57,7 +57,7 @@
                     <div class="classynav">
                         <ul id="nav">
                             <li class="active"><a href="<?php echo base_url() ?>Administrator/Departments-Manager/">Departments</a></li>
-                            <?php /*<li><a href="<?php echo base_url() ?>index.php/Administrator/Dashboard/">Dashboard</a></li> */ ?>
+                            <li><a href="<?php echo base_url() ?>Administrator/Departments-Manager/Add/">Add Department</a></li>
                             <li><a href="<?php echo base_url() ?>Logout/">Logout</a></li>
                         </ul>
 
