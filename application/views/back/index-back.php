@@ -11,12 +11,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Title -->
-    <title>Stanford - Conference Event HTML Template</title>
+    <title>Admin - Stanford UNiversity</title>
 
     <!-- Favicon -->
     <link rel="icon" href="<?php echo base_url() ?>assets/img/core-img/favicon.png">

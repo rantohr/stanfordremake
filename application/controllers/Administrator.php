@@ -35,12 +35,14 @@ class Administrator extends CI_Controller
             $this->session->set_userdata('admin',$user);
             redirect(base_url().'Administrator/Departments-Manager/');
         }
-        else {
-            $errors = array(
-                'error'=>'wrong information'
-            );
-            $this->load->view('back/signin',$errors);
-        }
+        else redirect(base_url().'login-error/');
+    }
+
+    public function login_error(){
+        $errors = array(
+            'error'=>'wrong information'
+        );
+        $this->load->view('back/signin',$errors);
     }
 
     public function loadLog()
