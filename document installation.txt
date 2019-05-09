@@ -1,0 +1,28 @@
+1-Prérecquis:
+
+-UwAmp 3.1.0 (http://www.uwamp.com/en/?page=download)
+
+
+2-Installation en mode local:
+
+-Telecharger le projet sur github
+-Extraire le fichier .zip que vous venez de télécharger
+
+-Copier le dossier dans le répertoire www\ de votre serveur wamp
+	
+-Importer la base de donnée university-database.sql dans votre MySql(PhpMyAdmin)
+-Editer le fichier config.php (application\config\config.php):
+	$config['base_url'] = 'http://localhost:80/university-online/';	
+		(changer :80 avec votre port Uwamp)
+		(vous pouvez changer le nom du dossier `university-online`)
+-Editer le fichier database.php (application\config\database.php):
+	'hostname' => 'localhost',
+	'username' => root',
+	'password' => 'root',
+	'database' => 'university',
+(changer root/root avec votre login/mot_de_passe phpMyAdmin)
+
+3-Démarrage:
+	
+-Ouvrir http://localhost:80/university-onilne/
+ avec votre navigateur
